@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio - IMC</title>
+
+    <script type="module">
+      function esValido(valor) {
+        return !Number.isNaN(valor) && valor > 0
+      }
+
+      function pedirNumero(msj) {
+        let valor
+        do {
+          valor = parseFloat(prompt(msj))
+
+          if (!esValido(valor)) {
+            alert('Dato invalido')
+          }
+        } while (!esValido(valor))
+
+        return valor
+      }
+
+      function calcularIMC(peso, altura) {
+        return peso / (altura * altura)
+      }
+
+      function clasificarIMC(imc) {
+        if (imc < 18.5) return 'Bajo peso'
+        if (imc < 25) return 'Normal'
+        if (imc < 30) return 'Sobrepeso'
+
+        return 'Obesidad'
+      }
+
+      const peso = pedirNumero('Ingresa tu peso en kg:')
+      const altura = pedirNumero('Ingresa tu altura en metros:')
+
+      const imc = calcularIMC(peso, altura)
+      const clasificacion = clasificarIMC(imc)
+
+      alert(`Peso: ${peso} kg
+        Altura: ${altura} m
+        IMC: ${imc.toFixed(2)}
+        Clasificación: ${clasificacion}`)
+    </script>
+  </head>
+  <body></body>
+</html>

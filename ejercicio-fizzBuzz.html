@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejercicio - FizzBuzz</title>
+
+    <script type="module">
+      function esValido(valor) {
+        return !Number.isNaN(valor) && valor > 0 && Number.isInteger(valor)
+      }
+
+      function pedirNumero(msj) {
+        let valor
+        do {
+          valor = parseFloat(prompt(msj))
+
+          if (!esValido(valor)) {
+            alert('Dato invalido')
+          }
+        } while (!esValido(valor))
+
+        return valor
+      }
+
+      function fizzBuzz(n) {
+        for (let i = 1; i <= n; i++) {
+          if (i % 3 == 0 && i % 5 == 0) {
+            console.log(i + ' - FizzBuzz')
+          } else if (i % 3 == 0) {
+            console.log(i + ' - Fizz')
+          } else if (i % 5 == 0) {
+            console.log(i + ' - Buzz')
+          }
+        }
+      }
+
+      const n = pedirNumero('Ingresa un numero:')
+
+      fizzBuzz(n)
+    </script>
+  </head>
+  <body>
+    <p>Los resultados se muestran en consola</p>
+  </body>
+</html>
