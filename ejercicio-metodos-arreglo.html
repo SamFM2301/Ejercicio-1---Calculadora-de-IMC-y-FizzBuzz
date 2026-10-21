@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Metodos de arreglo</title>
+
+    <script type="module">
+      const datos = [
+        {
+          id: 1,
+          titulo: 'Manejo de la ansiedad',
+          categoria: 'Ansiedad',
+          minutosLectura: 8,
+          likes: 120,
+          autor: { nombre: 'Ana Lopez' },
+        },
+        {
+          id: 2,
+          titulo: 'Rutinas de sueño',
+          categoria: 'Habitos',
+          minutosLectura: 5,
+          likes: 85,
+          autor: { nombre: 'Luis Perez' },
+        },
+        {
+          id: 3,
+          titulo: 'Respiracion consciente',
+          categoria: 'Ansiedad',
+          minutosLectura: 4,
+          likes: 200,
+          autor: null,
+        },
+        {
+          id: 4,
+          titulo: 'Mindfulness diario',
+          categoria: 'Habitos',
+          minutosLectura: 10,
+          likes: 150,
+          autor: { nombre: 'Sofia Ruiz' },
+        },
+        {
+          id: 5,
+          titulo: 'Estres academico',
+          categoria: 'Estres',
+          minutosLectura: 7,
+          likes: 95,
+          autor: { nombre: 'Carlos Diaz' },
+        },
+      ]
+
+      const copiaOriginal = JSON.stringify(datos)
+
+      const filtrados = datos
+        .filter(({ likes }) => likes > 100)
+        .map(({ titulo, likes, autor }) => ({
+          titulo,
+          likes,
+          autor: autor?.nombre ?? 'Anonimo',
+        }))
+
+      const total = datos.reduce(
+        (suma, { minutosLectura }) => suma + minutosLectura,
+        0,
+      )
+
+      const promedio = total / datos.length || 0
+
+      const ordenados = [...datos].sort((a, b) => b.likes - a.likes)
+
+      console.log({ filtrados, total, promedio, ordenados })
+
+      console.log('Original:', datos)
+      console.log('sin cambios?', JSON.stringify(datos) === copiaOriginal)
+    </script>
+  </head>
+  <body></body>
+</html>
